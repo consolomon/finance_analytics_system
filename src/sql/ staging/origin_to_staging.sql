@@ -1,0 +1,4 @@
+COPY KOSYAK1998YANDEXRU__STAGING.(:sql_table)((:sql_parameters))
+FROM LOCAL '/data/(:sql_key).csv'
+DELIMITER ','
+REJECTED DATA AS TABLE KOSYAK1998YANDEXRU__STAGING.(:sql_table)_rej;

@@ -1,0 +1,2 @@
+SELECT MAX(date_update)::Date
+FROM KOSYAK1998YANDEXRU__STAGING.currencies;
