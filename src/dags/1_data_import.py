@@ -8,14 +8,8 @@ from py.s3_loader import S3Loader
 from py.s3_loader import s3_load_file
 from py.vertica import VerticaConnection
 
-"""
-AWS_ACCESS_KEY_ID = "YCAJEWXOyY8Bmyk2eJL-hlt2K"
-AWS_SECRET_ACCESS_KEY = "YCPs52ajb2jNXxOUsL4-pFDL1HnV2BCPd928_ZoA"
 
-PATH_TO_SCRIPT = "/src/sql/dml/origin_to_staging.sql"
-"""
 VERTICA_CONN_ID = 'VERTICA'
-
 
 # # # SQL settings # # #
 PATH_TO_SCRIPT = '/src/sql/dml/origin_to_staging.sql'

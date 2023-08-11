@@ -2,7 +2,7 @@
 
 DROP TABLE IF EXISTS KOSYAK1998YANDEXRU__DWH.h_transaction;
 
-CREATE TABLE KOSYAK1998YANDEXRU__DWH.h_transaction (
+CREATE TABLE IF NOT EXISTS KOSYAK1998YANDEXRU__DWH.h_transaction (
     hk_transaction_id integer NOT NULL,
     operation_id uuid NOT NULL,
     load_dt timestamp(0) NOT NULL,
@@ -18,7 +18,7 @@ GROUP BY CALENDAR_HIERARCHY_DAY(h_transaction.load_dt::Date, 3, 2);
 
 DROP TABLE IF EXISTS KOSYAK1998YANDEXRU__DWH.h_account;
 
-CREATE TABLE KOSYAK1998YANDEXRU__DWH.h_account (
+CREATE TABLE IF NOT EXISTS KOSYAK1998YANDEXRU__DWH.h_account (
     hk_account_id integer NOT NULL,
     account_id integer NOT NULL,
     load_dt timestamp(0) NOT NULL,
@@ -34,7 +34,7 @@ GROUP BY CALENDAR_HIERARCHY_DAY(h_account.load_dt::Date, 3, 2);
 
 DROP TABLE IF EXISTS KOSYAK1998YANDEXRU__DWH.h_currency;
 
-CREATE TABLE KOSYAK1998YANDEXRU__DWH.h_currency (
+CREATE TABLE IF NOT EXISTS KOSYAK1998YANDEXRU__DWH.h_currency (
     hk_currency_id integer NOT NULL,
     currency_id integer NOT NULL,
     load_dt timestamp(0) NOT NULL,
@@ -50,7 +50,7 @@ GROUP BY CALENDAR_HIERARCHY_DAY(h_currency.load_dt::Date, 3, 2);
 
 DROP TABLE IF EXISTS KOSYAK1998YANDEXRU__DWH.l_transaction_account_from_to;
 
-CREATE TABLE KOSYAK1998YANDEXRU__DWH.l_transaction_account_from_to (
+CREATE TABLE IF NOT EXISTS KOSYAK1998YANDEXRU__DWH.l_transaction_account_from_to (
     hk_l_transaction_account_from_to integer NOT NULL,
     hk_transaction_id integer NOT NULL CONSTRAINT l_transaction_account_from_to_transaction_id_fkey REFERENCES KOSYAK1998YANDEXRU__DWH.h_transaction (hk_transaction_id),
     hk_account_id_from integer NOT NULL CONSTRAINT l_transaction_account_from_to_hk_account_id_from_fkey REFERENCES KOSYAK1998YANDEXRU__DWH.h_account (hk_account_id),
@@ -68,7 +68,7 @@ GROUP BY CALENDAR_HIERARCHY_DAY(l_transaction_account_from_to.load_dt::Date, 3, 
 
 DROP TABLE IF EXISTS KOSYAK1998YANDEXRU__DWH.l_transaction_currency;
 
-CREATE TABLE KOSYAK1998YANDEXRU__DWH.l_transaction_currency (
+CREATE TABLE IF NOT EXISTS KOSYAK1998YANDEXRU__DWH.l_transaction_currency (
     hk_l_transaction_currency integer NOT NULL,
     hk_transaction_id integer NOT NULL CONSTRAINT l_transaction_currency_transaction_id_fkey REFERENCES KOSYAK1998YANDEXRU__DWH.h_transaction (hk_transaction_id),
     hk_currency_id integer NOT NULL CONSTRAINT l_transaction_currency_currency_id_fkey REFERENCES KOSYAK1998YANDEXRU__DWH.h_currency (hk_currency_id),
@@ -85,7 +85,7 @@ GROUP BY CALENDAR_HIERARCHY_DAY(l_transaction_currency.load_dt::Date, 3, 2);
 
 DROP TABLE IF EXISTS KOSYAK1998YANDEXRU__DWH.s_transaction_requisites;
 
-CREATE TABLE KOSYAK1998YANDEXRU__DWH.s_transaction_requisites (
+CREATE TABLE IF NOT EXISTS KOSYAK1998YANDEXRU__DWH.s_transaction_requisites (
     hk_transaction_id integer NOT NULL,
     "status" varchar(20) NOT NULL,
     amount integer NOT NULL,
@@ -103,7 +103,7 @@ GROUP BY CALENDAR_HIERARCHY_DAY(s_transaction_requisites.transaction_dt::Date, 3
 
 DROP TABLE IF EXISTS KOSYAK1998YANDEXRU__DWH.s_currency_div;
 
-CREATE TABLE KOSYAK1998YANDEXRU__DWH.s_currency_div (
+CREATE TABLE IF NOT EXISTS KOSYAK1998YANDEXRU__DWH.s_currency_div (
     hk_currency_id integer NOT NULL,
     hk_currency_id_with integer NOT NULL,
     date_update timestamp(3) NOT NULL,

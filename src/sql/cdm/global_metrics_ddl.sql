@@ -1,4 +1,6 @@
-CREATE TABLE KOSYAK1998YANDEXRU__DWH.global_metrics (
+DROP TABLE IF EXISTS KOSYAK1998YANDEXRU__DWH.global_metrics
+
+CREATE TABLE IF NOT EXISTS KOSYAK1998YANDEXRU__DWH.global_metrics (
     date_update timestamp(0) NOT NULL,
     currency_from integer NOT NULL,
     amount_total integer NOT NULL,
